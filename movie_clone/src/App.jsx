@@ -1,5 +1,5 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ErrorPage } from "./pages/Errorpage";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {ErrorPage} from "./pages/Errorpage";
 import Rootlayout from "./layout/Rootlayout";
 import Home from "./pages/home";
 import MovieCategory from "./pages/MovieCategory";
@@ -10,60 +10,65 @@ import Nowplaying from "./pages/category/Nowplaying";
 import Popular from "./pages/category/Popular";
 import Toprated from "./pages/category/Toprated";
 import Upcoming from "./pages/category/Upcoming";
+import Info from "./pages/Info.jsx";
 
 const BrowserRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Rootlayout />,
-    errorElement: <ErrorPage />,
+    element: <Rootlayout/>,
+    errorElement: <ErrorPage/>,
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Home/>,
       },
       {
         path: "moviecategory",
         children: [
           {
             index: true,
-            element: <MovieCategory />,
+            element: <MovieCategory/>,
           },
           {
             path: "nowplaying",
-            element: <Nowplaying />,
+            element: <Nowplaying/>,
           },
           {
             path: "popular",
-            element: <Popular />,
+            element: <Popular/>,
           },
           {
             path: "toprated",
-            element: <Toprated />,
+            element: <Toprated/>,
           },
           {
             path: "upcoming",
-            element: <Upcoming />,
+            element: <Upcoming/>,
           },
         ],
       },
       {
+        path: "movie/:id",
+        element: <Info/>
+      },
+      {
         path: "search",
-        element: <Search />,
+        element: <Search/>,
       },
       {
         path: "login",
-        element: <Login />,
+        element: <Login/>,
       },
       {
         path: "signup",
-        element: <Signup />,
+        element: <Signup/>,
       },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={BrowserRouter} />;
+  return <RouterProvider router={BrowserRouter}/>;
 }
 
 export default App;
