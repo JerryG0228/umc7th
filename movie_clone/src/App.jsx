@@ -11,6 +11,8 @@ import Popular from "./pages/category/Popular";
 import Toprated from "./pages/category/Toprated";
 import Upcoming from "./pages/category/Upcoming";
 import Info from "./pages/Info.jsx";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 
 const BrowserRouter = createBrowserRouter([
   {
@@ -67,8 +69,15 @@ const BrowserRouter = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 function App() {
-  return <RouterProvider router={BrowserRouter}/>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={BrowserRouter}/>
+      <ReactQueryDevtools initialIsOpen={false}/>
+    </QueryClientProvider>
+  )
 }
 
 export default App;
